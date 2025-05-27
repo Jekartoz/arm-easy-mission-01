@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MISSION 01: CODEX INITIATE</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .hidden { display: none; }
+    .redzone {
+      background-color: red;
+      color: white;
+      animation: flash 0.5s infinite;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    @keyframes flash {
+      0%, 50% { background-color: red; }
+      25%, 75% { background-color: darkred; }
+    }
+    button { margin-top: 10px; padding: 5px; background: #222; color: #0f0; border: 1px solid #0f0; }
+    input { background: #111; color: #0f0; border: 1px solid #0f0; padding: 5px; }
+  </style>
+</head>
+<body><div id="level1">
+  <h2>LEVEL ONE: BINARY TIMESTAMP</h2>
+  <p>Selamat datang, kandidat terpilih.<br>
+  Password terenkode dalam denyut waktu yang membeku — timestamp pada 02:15, 03:40, dan 03:15.<br>
+  Iterasi setiap jam menggunakan fungsi offset dengan interval lima menit per karakter yang berganti.</p>
+  <input type="text" id="pass1"><button onclick="checkLevel1()">Submit</button>
+  <div id="result1"></div>
+</div><div id="level2" class="hidden">
+  <h2>LEVEL TWO: SHADOW PROTOCOL CIPHER</h2>
+  <p>Bukan hanya logika yang diuji, tapi juga nalarmu dalam mengurai bayangan yang tersembunyi.<br>
+  Riddle yang kau pecahkan sebelumnya hanyalah pintu gerbang—sekarang kau harus menembus shadow protocol dan memecahkan kode yang lebih rumit.</p>
+  <p>A= 25<br>
+  DCKCUC RGOQTICOTEC CRC ACPI DWPIUCTCEC FKZWFCRG EQVYM OGFWCV YGUCTKV?<br>
+  RAVJQP|JVON//LCXC‐E++</p>
+  <input type="text" id="pass2"><button onclick="checkLevel2()">Submit</button>
+  <div id="result2"></div>
+</div><div id="level3" class="hidden">
+  <h2>LEVEL THREE: CODE NAME VERIFICATION</h2>
+  <p>Masukkan Code Name untuk menginisiasi misi terakhir.</p>
+  <input type="text" id="codename"><button onclick="checkCodename()">Submit</button>
+  <div id="result3"></div>
+</div><script>
+function checkLevel1() {
+  const input = document.getElementById('pass1').value.toUpperCase();
+  const result = document.getElementById('result1');
+  if (input === 'ARM') {
+    result.innerHTML = '<p>[ACCESS GRANTED] Gerbang menuju next-level kini terbuka lebar. Siapkan dirimu — tantangan berikutnya menanti di ujung jaringan. Jangan lengah. Kegagalan bukan opsi.</p>';
+    document.getElementById('level2').classList.remove('hidden');
+  } else {
+    result.innerHTML = '<div class="redzone">[ACCESS DENIED] Protokol ERROR</div>';
+  }
+}
+
+function checkLevel2() {
+  const input = document.getElementById('pass2').value.toUpperCase();
+  const result = document.getElementById('result2');
+  if (input === 'JVON') {
+    result.innerHTML = '<p>[ACCESS GRANTED] Cipher terpecahkan. Jalur ke sistem inti terbuka. Lanjutkan sebelum timeout dan lockdown aktif.</p>';
+    document.getElementById('level3').classList.remove('hidden');
+  } else {
+    result.innerHTML = '<div class="redzone">[ACCESS DENIED] Cipher gagal dipecahkan. Sistem mengaktifkan protokol lockdown.</div>';
+  }
+}
+
+function checkCodename() {
+  const input = document.getElementById('codename').value.toUpperCase();
+  const result = document.getElementById('result3');
+  const allowed = ['AR97JEK','AR95HUN','AR45YUR','AR35PIO'];
+  if (allowed.includes(input)) {
+    result.innerHTML = '[ID VERIFIED] Code Name terautentikasi.<br><a href="https://drive.google.com/file/d/1aqR1D3mTgTLVxQt96qTJQJF0ZIISToHp/view?usp=drivesdk" target="_blank">[LINK IDC]</a>';
+  } else {
+    result.innerHTML = '<div class="redzone">[ACCESS DENIED] Unauthorized Code Name Detected.</div>';
+  }
+}
+</script></body>
+</html>
